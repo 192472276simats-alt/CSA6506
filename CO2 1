@@ -1,0 +1,26 @@
+zero_shot = """
+Write a product description for a Smart Fitness Watch.
+"""
+
+one_shot = """
+Example: Smart earbuds provide clear sound and comfort.
+Write a similar description for a Smart Fitness Watch.
+"""
+
+few_shot = """
+Examples:
+Smart shoes provide comfort.
+Fitness bands track activities.
+
+Write a description for a Smart Fitness Watch.
+"""
+
+print("ZERO-SHOT:")
+print("Smart watch tracks steps, heart rate, sleep and calories.")
+
+print("\nONE-SHOT:")
+print("A stylish fitness watch with health monitoring and notifications.")
+
+print("\nFEW-SHOT:")
+print("A smart fitness watch offers workout tracking, sleep analysis,")
+print("heart-rate monitoring and smart connectivity.")
