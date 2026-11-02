@@ -1,0 +1,46 @@
+import sqlite3
+
+connection = sqlite3.connect(":memory:")
+cursor = connection.cursor()
+
+cursor.execute("""
+CREATE TABLE Students (
+    id INTEGER,
+    name TEXT,
+    marks INTEGER
+)
+""")
+
+cursor.executemany(
+    "INSERT INTO Students VALUES (?, ?, ?)",
+    [
+        (1, "Ravi", 90),
+        (2, "Priya", 85),
+        (3, "Arun", 70)
+    ]
+)
+
+prompt = """
+Table: Students(id, name, marks)
+Requirement: Display students scoring above 80.
+"""
+
+print("Structured Prompt:")
+print(prompt)
+
+query = """
+SELECT name, marks
+FROM Students
+WHERE marks > 80;
+"""
+
+print("\nSQL Query:")
+print(query)
+
+cursor.execute(query)
+
+print("Output:")
+for row in cursor.fetchall():
+    print(row)
+
+connection.close()
