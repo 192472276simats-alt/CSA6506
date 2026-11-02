@@ -1,0 +1,25 @@
+problem = "Add two numbers"
+
+prompt = f"""
+Generate a Python program for:
+{problem}
+
+Use simple code and display the result.
+"""
+
+print("Structured Prompt:")
+print(prompt)
+
+# Generated Python program
+a = 10
+b = 20
+
+result = a + b
+
+print("\nGenerated Code Output:")
+print("Sum =", result)
+
+# Validation
+assert result == 30
+
+print("Validation: Passed")
