@@ -1,0 +1,20 @@
+from sentence_transformers import SentenceTransformer, util
+
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+document = [
+    "RAG combines retrieval and generation.",
+    "AI enables machines to perform intelligent tasks."
+]
+
+question = "What is RAG?"
+
+doc_vectors = model.encode(document)
+q_vector = model.encode(question)
+
+scores = util.cos_sim(q_vector, doc_vectors)
+context = document[scores.argmax()]
+
+print("Question:", question)
+print("Retrieved Context:", context)
+print("Answer:", context)
