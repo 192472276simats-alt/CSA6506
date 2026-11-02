@@ -1,0 +1,28 @@
+from sentence_transformers import SentenceTransformer, util
+
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+docs = [
+    "Python is a programming language.",
+    "AI simulates human intelligence.",
+    "ML learns patterns from data."
+]
+
+# Document loading and chunking
+chunks = docs
+
+# Embeddings
+vectors = model.encode(chunks)
+
+# User question
+question = "What is Machine Learning?"
+
+q_vector = model.encode(question)
+
+# Retrieval
+scores = util.cos_sim(q_vector, vectors)
+context = chunks[scores.argmax()]
+
+# Answer generation demo
+print("Retrieved:", context)
+print("Answer:", context)
