@@ -1,0 +1,38 @@
+zero_shot = """
+Write a professional email requesting leave due to illness.
+"""
+
+one_shot = """
+Example:
+Subject: Leave Request
+Dear Manager,
+I request leave for personal reasons.
+Regards, Student.
+
+Write a similar sick-leave email.
+"""
+
+few_shot = """
+Examples:
+Use a formal greeting.
+Mention the reason and leave duration.
+End with a polite closing.
+
+Write a professional sick-leave email.
+"""
+
+print("ZERO-SHOT:")
+print("Subject: Sick Leave Request")
+print("Dear Sir, I am unwell and request leave for today.")
+print("Regards, Student")
+
+print("\nONE-SHOT:")
+print("Subject: Request for Sick Leave")
+print("Dear Manager, Kindly grant me leave due to illness.")
+print("Regards, Student")
+
+print("\nFEW-SHOT:")
+print("Subject: Sick Leave Request")
+print("Dear Sir/Madam, I am unwell and request one day leave.")
+print("Thank you for your understanding.")
+print("Regards, Student")
