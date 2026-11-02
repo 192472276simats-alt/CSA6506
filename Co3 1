@@ -1,0 +1,20 @@
+from sentence_transformers import SentenceTransformer, util
+
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+texts = [
+    "Artificial Intelligence is used in machines.",
+    "Python is a programming language.",
+    "Machine Learning learns from data."
+]
+
+embeddings = model.encode(texts)
+
+query = "AI technology"
+query_embedding = model.encode(query)
+
+scores = util.cos_sim(query_embedding, embeddings)
+
+print("Query:", query)
+print("Best Match:", texts[scores.argmax()])
+print("Similarity:", round(float(scores.max()), 2))
