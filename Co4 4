@@ -1,0 +1,26 @@
+import chromadb
+from sentence_transformers import SentenceTransformer
+
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+client = chromadb.Client()
+collection = client.create_collection("documents")
+
+docs = ["Python basics", "AI concepts", "ML techniques"]
+
+vectors = model.encode(docs).tolist()
+
+collection.add(
+    documents=docs,
+    embeddings=vectors,
+    ids=["1", "2", "3"]
+)
+
+query = model.encode(["Python"]).tolist()
+
+result = collection.query(
+    query_embeddings=query,
+    n_results=2
+)
+
+print(result["documents"])
