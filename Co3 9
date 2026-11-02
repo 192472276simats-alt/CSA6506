@@ -1,0 +1,19 @@
+from langchain_community.document_loaders import TextLoader
+from langchain_community.vectorstores import FAISS
+from langchain_huggingface import HuggingFaceEmbeddings
+
+# Load external text file
+loader = TextLoader("notes.txt")
+documents = loader.load()
+
+embedding = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2"
+)
+
+db = FAISS.from_documents(documents, embedding)
+
+question = input("Ask a question: ")
+
+result = db.similarity_search(question, k=1)
+
+print("Answer:", result[0].page_content)
