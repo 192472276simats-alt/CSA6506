@@ -1,0 +1,28 @@
+from langchain_community.vectorstores import FAISS
+from langchain_huggingface import HuggingFaceEmbeddings
+
+docs = [
+    "Python is a programming language.",
+    "Python is used in AI and web development."
+]
+
+embedding = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2"
+)
+
+db = FAISS.from_texts(docs, embedding)
+
+history = []
+
+while True:
+    question = input("You: ")
+
+    if question.lower() == "exit":
+        break
+
+    result = db.similarity_search(question, k=1)
+    answer = result[0].page_content
+
+    history.append((question, answer))
+
+    print("Bot:", answer)
