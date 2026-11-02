@@ -1,0 +1,26 @@
+task = "Explain Artificial Intelligence."
+
+prompts = {
+    "Zero-shot": task,
+
+    "One-shot":
+    "Example: Python is a programming language. "
+    + task,
+
+    "Few-shot":
+    "Examples: AI helps doctors. AI supports robots. "
+    + task
+}
+
+for method, prompt in prompts.items():
+    print("\n", method)
+    print("Prompt:", prompt)
+
+print("\nCOMPARATIVE ANALYSIS")
+
+print("Zero-shot: Direct response")
+print("One-shot: Follows one example")
+print("Few-shot: Follows multiple examples")
+
+print("\nConclusion:")
+print("Few-shot prompting can improve consistency.")
