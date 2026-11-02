@@ -1,0 +1,22 @@
+zero_shot = """
+Write a 200-word blog on Applications of
+Artificial Intelligence in Healthcare.
+"""
+
+one_shot = """
+Example: AI in education supports personalized learning.
+Write a 200-word blog on AI in healthcare.
+"""
+
+few_shot = """
+Examples:
+AI in education supports learning.
+AI in agriculture monitors crops.
+
+Write a 200-word blog on AI in healthcare.
+Include applications, benefits and challenges.
+"""
+
+print("ZERO-SHOT PROMPT:\n", zero_shot)
+print("\nONE-SHOT PROMPT:\n", one_shot)
+print("\nFEW-SHOT PROMPT:\n", few_shot)
