@@ -1,0 +1,25 @@
+zero_shot = "Create a promotional post for an AI Workshop."
+
+one_shot = """
+Example: Join our Python Workshop and learn coding.
+Create a similar post for an AI Workshop.
+"""
+
+few_shot = """
+Examples:
+Join our Python Workshop!
+Explore our Robotics Workshop!
+
+Create an AI Workshop post with emojis and hashtags.
+"""
+
+print("ZERO-SHOT:")
+print("Join our AI Workshop! Learn Artificial Intelligence.")
+
+print("\nONE-SHOT:")
+print("Explore AI and improve your technical skills. Register now!")
+
+print("\nFEW-SHOT:")
+print("Join our AI Workshop! 🚀")
+print("Learn Generative AI and Machine Learning.")
+print("Register today! #AIWorkshop #Technology")
