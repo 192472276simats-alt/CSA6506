@@ -1,0 +1,35 @@
+article = """
+Artificial Intelligence helps doctors analyze medical images,
+predict health risks and support medical research.
+However, privacy, bias and inaccurate results are challenges.
+Human supervision is important.
+"""
+
+zero_shot = f"Summarize this article in 50 words:\n{article}"
+
+one_shot = f"""
+Example:
+Article: AI helps farmers monitor crops.
+Summary: AI supports crop monitoring.
+
+Summarize in 50 words:
+{article}
+"""
+
+few_shot = f"""
+Examples:
+AI supports education through personalized learning.
+AI helps agriculture monitor crops.
+
+Summarize this article in 50 words:
+{article}
+"""
+
+print("ZERO-SHOT:\n", zero_shot)
+print("\nONE-SHOT:\n", one_shot)
+print("\nFEW-SHOT:\n", few_shot)
+
+print("\nCOMPARISON:")
+print("Zero-shot: Simple summary")
+print("One-shot: Follows an example")
+print("Few-shot: Consistent summarization style")
