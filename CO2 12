@@ -1,0 +1,64 @@
+from openai import OpenAI
+
+client = OpenAI(api_key=api_key)
+
+prompts = [
+    "Explain Artificial Intelligence.",
+
+    "Explain AI in simple words.",
+
+    "Explain AI in five points with examples."
+]
+
+responses = []
+
+# Generate responses
+for i, prompt in enumerate(prompts):
+
+    result = client.responses.create(
+        model="gpt-4.1-mini",
+        input=prompt
+    )
+
+    responses.append(result.output_text)
+
+    print("\nPrompt", i + 1)
+    print("Response:", result.output_text)
+
+# Evaluate responses
+evaluation_prompt = f"""
+Evaluate these responses based on:
+
+1. Accuracy
+2. Relevance
+3. Completeness
+4. Clarity
+
+Give scores out of 5 and identify the best response.
+
+Response 1: {responses[0]}
+Response 2: {responses[1]}
+Response 3: {responses[2]}
+"""
+
+evaluation = client.responses.create(
+    model="gpt-4.1-mini",
+    input=evaluation_prompt
+)
+
+print("\nEvaluation:")
+print(evaluation.output_text)
+
+# Refine the prompt
+refined_prompt = """
+Explain Artificial Intelligence in five simple points
+with real-world examples and clear language.
+"""
+
+final_result = client.responses.create(
+    model="gpt-4.1-mini",
+    input=refined_prompt
+)
+
+print("\nRefined Output:")
+print(final_result.output_text)
