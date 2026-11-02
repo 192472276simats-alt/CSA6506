@@ -1,0 +1,16 @@
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
+
+model = SentenceTransformer('all-MiniLM-L6-v2')
+
+docs = ["Machine learning is part of AI",
+        "Python is easy to learn",
+        "Data science uses statistics"]
+
+doc_vectors = model.encode(docs)
+query = model.encode(["Machine Learning"])
+
+scores = cosine_similarity(query, doc_vectors)[0]
+
+for i in scores.argsort()[::-1]:
+    print(docs[i], round(scores[i], 2))
