@@ -1,0 +1,20 @@
+from langchain_community.vectorstores import FAISS
+from langchain_huggingface import HuggingFaceEmbeddings
+
+docs = [
+    "Diabetes affects blood sugar levels.",
+    "Exercise improves physical health.",
+    "Healthy food supports good health."
+]
+
+embedding = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2"
+)
+
+db = FAISS.from_texts(docs, embedding)
+
+question = "What is diabetes?"
+results = db.similarity_search(question, k=1)
+
+print("User:", question)
+print("Bot:", results[0].page_content)
